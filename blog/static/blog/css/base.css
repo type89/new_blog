@@ -35,6 +35,10 @@ h1.card-title {
   margin-bottom: 0;
 }
 
+.page_body img {
+	max-width:100%;
+}
+
 body > footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
