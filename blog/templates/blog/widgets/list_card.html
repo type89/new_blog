@@ -6,43 +6,44 @@
   <div class="card-header bg-{{ mysite.color }}">
     <h1 class="card-title text-white">{{ post.title }}</h1>
   </div><!-- card-header終了 -->
-  
+
   <div class="card-body row">
     <!-- card-bodyの左側 -->
     <div class="col-xs-12 col-sm-6 text-center">
       {% if post.thumnail %}
         <a href="{{ post.thumnail.url }}" target="_blank" rel="nofollow"><img class="img-fluid lazy" data-original="{{ post.thumnail.url }}" alt="{{ post.title }}"></a>
       {% else %}
-        <img class="img-fluid lazy" data-original="{% static 'blog/img/noimage.png' %}" alt="{{ post.title }}">
+        <!--<img class="img-fluid lazy" data-original="{% static 'blog/img/noimage.png' %}" alt="{{ post.title }}">-->
+        <img src="https://lh3.googleusercontent.com/gUgXLZbXlUcr9VK0dQR0DrKlk81juNply2Q5rNg2dQsKg4r0-gkVxQU5v98-JkH203i7nTd6__0r5GR1YYub_eORrBCmsKsQXzdiahqUeNK9GITlxXMuGY9Etx56pEnPUdjdTYZuIzJzXdY0FGPPwpa9kDtiFxt0ZHuqc1E09bGO8-gvZixGtlGDETZDBpWxM7D3RvloNyz0rffpob2H6jper4qLFkye4eibL0wnyCa1sV8CBtiKscgXWoP74RHDs6MhKyUH_C82lbZsVuGR2g0x3esP2nwjTBVa0eDFdJTZ_FIP4gaacDfJk176_NLKDfj5xTfGz78BRt4dBMQF86CXvkFs6lqCvpFsQwr7KGm3hbGSlDpbxcUfRwCBs_ofSkLORo-VcTcgVBlg14k_QH7zRnL-XR7aoufE9627OJBJ1CJPsSiQTQVFrYt2gEUDUs5lLOzTT6A9r9T9EKcH7-LFcPtyQjaEn4-MF9fK4dZVLMKCziaqBn-OV3m3XJIXBEn5chDh9iSkOzJYePerDQqIGY2zZFwrT0sZuJC8k5JWQ66kdrHkT0yp2eRcVQ6tWjwNs316wR7rhzdaclUy3SBNCNRWI6FtZI-HouNowQPv3GlyZ0V3PXiV_c-sMaMppo23PJJr2KmNO2e8rbVU2luXXOKqFCwPXngufFQ1XnUEhtP2szDj3st9Fx0UnyNC0TVfis4FhT9KGG1YiO5X-IbcOMh5t3QBq0Pvf9A=s225-no">
       {% endif %}
     </div><!-- card-bodyの左側終わり -->
-  
+
     <!-- card-bodyの右側 -->
     <div class="col-xs-12 col-sm-6">
       <span class="badge badge-{{ mysite.color }} badge-pill">{% by_the_time post.created_at %}</span>
       <span class="badge badge-{{ mysite.color }} badge-pill">{{ post.created_at }}</span>
       <br>
-  
+
       <span class="badge badge-{{ mysite.color }}">
         <a class="text-white" href="{% url 'blog:category' post.category.name %}">{{ post.category.name }}</a>
       </span>
       <br>
-  
+
       {% for tag in post.tag.all %}
         <span class="badge badge-{{ mysite.color }}">
           <a class="text-white" href="{% url 'blog:tag' tag.name %}">{{ tag.name }}</a>
         </span>
       {% endfor %}
       <hr>
-  
+
       <a class="btn btn-outline-{{ mysite.color }} btn-lg btn-block" href="{% url 'blog:detail' post.pk %}">続きを読む</a>
       <br>
-  
+
       {% if user.is_authenticated %}
         <a href="{% url 'admin:blog_post_change' post.pk %}">管理画面へ</a>
       {% endif %}
     </div><!-- card-bodyの右側おわり -->
-  
+
   </div><!-- card-body終了 -->
 
 </div>
